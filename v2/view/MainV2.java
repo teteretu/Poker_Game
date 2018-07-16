@@ -10,10 +10,10 @@ public class MainV2 {
 			System.exit(1);
 		}
 
-		for (String arg : args) {
+		for (int x = 0; x < 3; x++) {
 			Archive file = new Archive();
 			
-			file.readFileAndCalculate(arg);
+			file.readFileAndCalculate(args[x]);
 		}
 		
 		System.exit(0);
