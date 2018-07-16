@@ -1,4 +1,4 @@
-package poker;
+package view;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,10 +8,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Main {
-	private static final String FILENAME2k = "C:\\Users\\win7\\Documents\\git-repositories\\Poker_Game\\poker2K.txt";
-	private static final String FILENAME2M = "C:\\Users\\win7\\Documents\\git-repositories\\Poker_Game\\poker2M.txt";
-	private static final String FILENAME200M = "C:\\Users\\win7\\Documents\\git-repositories\\Poker_Game\\poker200M.txt";
+public class MainV1 {
+	private static String FILENAME2k;
+	private static String FILENAME2M;
+	private static String FILENAME200M;
 
 	private static long four;
 	private static long nothing;
@@ -19,6 +19,22 @@ public class Main {
 	private static long sequences;
 	private static long datePassed;
 	
+	public static void main(String[] args) {
+		if (args.length < 3) {
+			System.out.println("Informe 3 arquivos para serem lidos.");
+			System.exit(1);
+		}
+				
+		MainV1.FILENAME2k = args[0];
+		MainV1.FILENAME2M = args[1];
+		MainV1.FILENAME200M = args[2];
+		
+		calculate2k();
+		calculate2M();
+		calculate200M();
+		
+		System.exit(0);
+	}
 	
 	public enum Card {
 	    T(10),J(11),Q(12),K(13),A(14);
@@ -33,14 +49,6 @@ public class Main {
 	    }
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		calculate2k();
-		calculate2M();
-		calculate200M();
-		
-	}
-	
 	public static void calculate2k () {
 		Long dateBeggin = System.currentTimeMillis();
 		
@@ -49,7 +57,7 @@ public class Main {
 		datePassed = System.currentTimeMillis() - dateBeggin;
 		System.out.println("2 mil: ");
 		System.out.print("date Passed: " + datePassed);
-		System.out.println(" four: " + four + " diferentes: " + differents + " sequências: " + sequences);
+		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
 		System.out.println("nothing: " + nothing);
 		
 		four = 0;
@@ -65,9 +73,9 @@ public class Main {
 		readFileAndCalculate(FILENAME2M);
 		
 		datePassed = System.currentTimeMillis() - dateBeggin;
-		System.out.println("2 milhões: ");
+		System.out.println("2 milhoes: ");
 		System.out.print("date Passed: " + datePassed);
-		System.out.println(" four: " + four + " diferentes: " + differents + " sequências: " + sequences);
+		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
 		System.out.println("nothing: " + nothing);
 
 		four = 0;
@@ -84,9 +92,9 @@ public class Main {
 		readFileAndCalculate(FILENAME200M);
 		
 		datePassed = System.currentTimeMillis() - dateBeggin;
-		System.out.println("200 milhões: ");
+		System.out.println("200 milhoes: ");
 		System.out.println("date Passed: " + datePassed);
-		System.out.println("four: " + four + " diferentes: " + differents + " sequências: " + sequences);
+		System.out.println("four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
 		System.out.println("nothing: " + nothing);
 
 		four = 0;
@@ -115,7 +123,7 @@ public class Main {
 				
 				if (thousand > 5000) {
 					if (hands != null && hands.size() > 0) {
-						System.out.println("calculando");
+//						System.out.println("calculando");
 						verifyHands(hands);
 						hands = null;
 						hands = new ArrayList<>();

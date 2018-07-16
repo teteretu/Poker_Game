@@ -3,8 +3,6 @@ package util;
 import java.util.Arrays;
 import java.util.List;
 
-import poker.Main.Card;
-
 public class ProcessArchive {
 
 	private static long four = 0;
@@ -125,6 +123,19 @@ public class ProcessArchive {
 
 	public void setSequences(long sequences) {
 		ProcessArchive.sequences = sequences;
+	}
+	
+	public enum Card {
+	    T(10),J(11),Q(12),K(13),A(14);
+	 
+	    public Integer cardValue;
+	    Card(Integer value) {
+	        cardValue = (Integer) value;
+	    }
+	    
+	    public Integer getCard() {
+	    	return this.cardValue;
+	    }
 	}
 
 }
