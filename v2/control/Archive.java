@@ -22,6 +22,10 @@ public class Archive {
 	public static List<String> readFileAndCalculate(String fileName) {
 		Long dateBeggin = System.currentTimeMillis();
 		
+		four = 0;
+		differents = 0;
+		sequences = 0;
+		datePassed = 0;
 		BufferedReader br = null;
 		FileReader fr = null;
 		List<String> hands = new ArrayList<>();
