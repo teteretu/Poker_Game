@@ -14,7 +14,6 @@ import util.ProcessArchive;
 public class Archive {
 
 	private static long four = 0;
-	private static long nothing = 0;
 	private static long differents = 0;
 	private static long sequences = 0;
 	private static long datePassed = 0;
@@ -31,6 +30,10 @@ public class Archive {
 		List<String> hands = new ArrayList<>();
 		ProcessArchive processArquive = new ProcessArchive();
 
+		processArquive.setFour(0);
+		processArquive.setDifferents(0);
+		processArquive.setSequences(0);
+		
 		try {
 
 			//br = new BufferedReader(new FileReader(FILENAME));
@@ -62,7 +65,6 @@ public class Archive {
 			}
 			
 			setFour(processArquive.getFour());
-			setNothing(processArquive.getNothing());
 			setDifferents(processArquive.getDifferents());
 			setSequences(processArquive.getSequences());
 			setDatePassed(System.currentTimeMillis() - dateBeggin);
@@ -120,14 +122,6 @@ public class Archive {
 
 	public static void setFour(long four) {
 		Archive.four = four;
-	}
-
-	public static long getNothing() {
-		return nothing;
-	}
-
-	public static void setNothing(long nothing) {
-		Archive.nothing = nothing;
 	}
 
 	public static long getDifferents() {

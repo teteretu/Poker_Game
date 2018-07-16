@@ -6,7 +6,6 @@ import java.util.List;
 public class ProcessArchive {
 
 	private static long four = 0;
-	private static long nothing = 0;
 	private static long differents = 0;
 	private static long sequences = 0;
 	
@@ -20,7 +19,6 @@ public class ProcessArchive {
 			if(result.equalsIgnoreCase("four")) {
 				four++;
 			} else if (result.equalsIgnoreCase("nada")) { //se existe pares
-				nothing++;
 			} else if (isSequency(hand)) { //sequência
 				sequences++;
 			}else {		//todos diferentes
@@ -99,14 +97,6 @@ public class ProcessArchive {
 
 	public void setFour(long four) {
 		ProcessArchive.four = four;
-	}
-
-	public long getNothing() {
-		return nothing;
-	}
-
-	public void setNothing(long nothing) {
-		ProcessArchive.nothing = nothing;
 	}
 
 	public long getDifferents() {
