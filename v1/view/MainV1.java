@@ -1,4 +1,4 @@
-package poker;
+package view;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Main {
+public class MainV1 {
 	private static String FILENAME2k;
 	private static String FILENAME2M;
 	private static String FILENAME200M;
@@ -22,15 +22,18 @@ public class Main {
 	public static void main(String[] args) {
 		if (args.length < 3) {
 			System.out.println("Informe 3 arquivos para serem lidos.");
+			System.exit(1);
 		}
 				
-		Main.FILENAME2k = args[0];
-		Main.FILENAME2M = args[1];
-		Main.FILENAME200M = args[2];
+		MainV1.FILENAME2k = args[0];
+		MainV1.FILENAME2M = args[1];
+		MainV1.FILENAME200M = args[2];
 		
 		calculate2k();
 		calculate2M();
 		calculate200M();
+		
+		System.exit(0);
 	}
 	
 	public enum Card {

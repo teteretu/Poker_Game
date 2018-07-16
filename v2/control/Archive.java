@@ -38,7 +38,7 @@ public class Archive {
 				
 				if (thousand > 5000) {
 					if (hands != null && hands.size() > 0) {
-						System.out.println("calculando");
+//						System.out.println("calculando");
 						processArquive.verifyHands(hands);
 						hands = null;
 						hands = new ArrayList<>();
