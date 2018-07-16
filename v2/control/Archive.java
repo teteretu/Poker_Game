@@ -1,7 +1,10 @@
 package control;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +86,28 @@ public class Archive {
 
 		}
 		return null;
+	}
+	
+	public static void writeFile (String line) {
+		try {
+			File file = new File("saida.txt");
+			
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			bw.write(line);
+			
+			bw.close();
+			fw.close();
+		}
+		
+		catch (IOException e) {
+			 e.printStackTrace();
+		}
 	}
 
 	public static long getFour() {

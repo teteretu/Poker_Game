@@ -1,11 +1,8 @@
 package view;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class MainV1 {
@@ -18,6 +15,7 @@ public class MainV1 {
 	private static long differents;
 	private static long sequences;
 	private static long datePassed;
+	private static String line;
 	
 	public static void main(String[] args) {
 		if (args.length < 3) {
@@ -30,9 +28,19 @@ public class MainV1 {
 		MainV1.FILENAME200M = args[2];
 		
 		calculate2k();
-		calculate2M();
-		calculate200M();
+		line = String.valueOf(datePassed) + " " + String.valueOf(four) +
+				" " + String.valueOf(differents) + " " + String.valueOf(sequences) + "\n";
 		
+		calculate2M();
+		line += String.valueOf(datePassed) + " " + String.valueOf(four) +
+				" " + String.valueOf(differents) + " " + String.valueOf(sequences) + "\n";
+		
+		calculate200M();
+		line += String.valueOf(datePassed) + " " + String.valueOf(four) +
+				" " + String.valueOf(differents) + " " + String.valueOf(sequences) + "\n";
+		
+		writeFile(line);
+
 		System.exit(0);
 	}
 	
@@ -52,56 +60,56 @@ public class MainV1 {
 	public static void calculate2k () {
 		Long dateBeggin = System.currentTimeMillis();
 		
-		readFileAndCalculate(FILENAME2k);
-		
-		datePassed = System.currentTimeMillis() - dateBeggin;
-		System.out.println("2 mil: ");
-		System.out.print("date Passed: " + datePassed);
-		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
-		System.out.println("nothing: " + nothing);
-		
 		four = 0;
 		nothing = 0;
 		differents = 0;
 		sequences = 0;
 		datePassed = 0;
+		
+		readFileAndCalculate(FILENAME2k);
+		
+		datePassed = System.currentTimeMillis() - dateBeggin;
+//		System.out.println("2 mil: ");
+//		System.out.print("date Passed: " + datePassed);
+//		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
+//		System.out.println("nothing: " + nothing);
 	}
 
 	public static void calculate2M () {
 		Long dateBeggin = System.currentTimeMillis();
-		
-		readFileAndCalculate(FILENAME2M);
-		
-		datePassed = System.currentTimeMillis() - dateBeggin;
-		System.out.println("2 milhoes: ");
-		System.out.print("date Passed: " + datePassed);
-		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
-		System.out.println("nothing: " + nothing);
 
 		four = 0;
 		nothing = 0;
 		differents = 0;
 		sequences = 0;
 		datePassed = 0;
+		
+		readFileAndCalculate(FILENAME2M);
+		
+		datePassed = System.currentTimeMillis() - dateBeggin;
+//		System.out.println("2 milhoes: ");
+//		System.out.print("date Passed: " + datePassed);
+//		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
+//		System.out.println("nothing: " + nothing);
 	}
 	
 
 	public static void calculate200M () {
 		Long dateBeggin = System.currentTimeMillis();
 		
-		readFileAndCalculate(FILENAME200M);
-		
-		datePassed = System.currentTimeMillis() - dateBeggin;
-		System.out.println("200 milhoes: ");
-		System.out.println("date Passed: " + datePassed);
-		System.out.println("four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
-		System.out.println("nothing: " + nothing);
-
 		four = 0;
 		nothing = 0;
 		differents = 0;
 		sequences = 0;
 		datePassed = 0;
+
+		readFileAndCalculate(FILENAME200M);
+		
+		datePassed = System.currentTimeMillis() - dateBeggin;
+//		System.out.println("200 milhoes: ");
+//		System.out.println("date Passed: " + datePassed);
+//		System.out.println("four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
+//		System.out.println("nothing: " + nothing);
 	}
 	
 	public static List<String> readFileAndCalculate(String fileName) {
@@ -245,6 +253,27 @@ public class MainV1 {
 			return true;
 		else
 			return false;	
+	}
+	
+	public static void writeFile (String line) {
+		try {
+			File file = new File("saida.txt");
+			
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			bw.write(line);
+			bw.close();
+			fw.close();
+		}
+		
+		catch (IOException e) {
+			 e.printStackTrace();
+		}
 	}
 	
 }
