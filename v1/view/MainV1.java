@@ -11,7 +11,6 @@ public class MainV1 {
 	private static String FILENAME200M;
 
 	private static long four;
-	private static long nothing;
 	private static long differents;
 	private static long sequences;
 	private static long datePassed;
@@ -27,15 +26,15 @@ public class MainV1 {
 		MainV1.FILENAME2M = args[1];
 		MainV1.FILENAME200M = args[2];
 		
-		calculate2k();
+		calculate(MainV1.FILENAME2k);
 		line = String.valueOf(datePassed) + " " + String.valueOf(four) +
 				" " + String.valueOf(differents) + " " + String.valueOf(sequences) + "\n";
 		
-		calculate2M();
+		calculate(MainV1.FILENAME2M);
 		line += String.valueOf(datePassed) + " " + String.valueOf(four) +
 				" " + String.valueOf(differents) + " " + String.valueOf(sequences) + "\n";
 		
-		calculate200M();
+		calculate(MainV1.FILENAME200M);
 		line += String.valueOf(datePassed) + " " + String.valueOf(four) +
 				" " + String.valueOf(differents) + " " + String.valueOf(sequences) + "\n";
 		
@@ -57,59 +56,17 @@ public class MainV1 {
 	    }
 	}
 	
-	public static void calculate2k () {
+	public static void calculate (String directory) {
 		Long dateBeggin = System.currentTimeMillis();
 		
 		four = 0;
-		nothing = 0;
 		differents = 0;
 		sequences = 0;
 		datePassed = 0;
 		
-		readFileAndCalculate(FILENAME2k);
+		readFileAndCalculate(directory);
 		
 		datePassed = System.currentTimeMillis() - dateBeggin;
-//		System.out.println("2 mil: ");
-//		System.out.print("date Passed: " + datePassed);
-//		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
-//		System.out.println("nothing: " + nothing);
-	}
-
-	public static void calculate2M () {
-		Long dateBeggin = System.currentTimeMillis();
-
-		four = 0;
-		nothing = 0;
-		differents = 0;
-		sequences = 0;
-		datePassed = 0;
-		
-		readFileAndCalculate(FILENAME2M);
-		
-		datePassed = System.currentTimeMillis() - dateBeggin;
-//		System.out.println("2 milhoes: ");
-//		System.out.print("date Passed: " + datePassed);
-//		System.out.println(" four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
-//		System.out.println("nothing: " + nothing);
-	}
-	
-
-	public static void calculate200M () {
-		Long dateBeggin = System.currentTimeMillis();
-		
-		four = 0;
-		nothing = 0;
-		differents = 0;
-		sequences = 0;
-		datePassed = 0;
-
-		readFileAndCalculate(FILENAME200M);
-		
-		datePassed = System.currentTimeMillis() - dateBeggin;
-//		System.out.println("200 milhoes: ");
-//		System.out.println("date Passed: " + datePassed);
-//		System.out.println("four: " + four + " diferentes: " + differents + " sequencias: " + sequences);
-//		System.out.println("nothing: " + nothing);
 	}
 	
 	public static List<String> readFileAndCalculate(String fileName) {
@@ -119,7 +76,6 @@ public class MainV1 {
 
 		try {
 
-			//br = new BufferedReader(new FileReader(FILENAME));
 			fr = new FileReader(fileName);
 			br = new BufferedReader(fr);
 
@@ -182,7 +138,7 @@ public class MainV1 {
 			if(result.equalsIgnoreCase("four")) {
 				four++;
 			} else if (result.equalsIgnoreCase("nada")) { //se existe pares
-				nothing++;
+				
 			} else if (isSequency(hand)) { //sequência
 				sequences++;
 			}else {		//todos diferentes
