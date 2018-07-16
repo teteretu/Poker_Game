@@ -51,6 +51,12 @@ public class Main {
 		System.out.print("date Passed: " + datePassed);
 		System.out.println(" four: " + four + " diferentes: " + differents + " sequências: " + sequences);
 		System.out.println("nothing: " + nothing);
+		
+		four = 0;
+		nothing = 0;
+		differents = 0;
+		sequences = 0;
+		datePassed = 0;
 	}
 
 	public static void calculate2M () {
@@ -63,6 +69,12 @@ public class Main {
 		System.out.print("date Passed: " + datePassed);
 		System.out.println(" four: " + four + " diferentes: " + differents + " sequências: " + sequences);
 		System.out.println("nothing: " + nothing);
+
+		four = 0;
+		nothing = 0;
+		differents = 0;
+		sequences = 0;
+		datePassed = 0;
 	}
 	
 
@@ -76,6 +88,12 @@ public class Main {
 		System.out.println("date Passed: " + datePassed);
 		System.out.println("four: " + four + " diferentes: " + differents + " sequências: " + sequences);
 		System.out.println("nothing: " + nothing);
+
+		four = 0;
+		nothing = 0;
+		differents = 0;
+		sequences = 0;
+		datePassed = 0;
 	}
 	
 	public static List<String> readFileAndCalculate(String fileName) {
