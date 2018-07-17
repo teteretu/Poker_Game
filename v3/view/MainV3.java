@@ -38,7 +38,7 @@ public class MainV3 {
 		
 		String line = new String();
 
-		// Esse for é pra executar pros 3 primeiros argumentos
+		// Esse for Ã© pra executar pros 3 primeiros argumentos
 		for (int i = 0; i < 3; i++) {
 			
 			long dateBeggin = System.currentTimeMillis();
@@ -48,7 +48,7 @@ public class MainV3 {
 			sequences = 0;
 			datePassed = 0;
 
-			// Início do corpo do método readFileAndCalculate
+			// InÃ­cio do corpo do mÃ©todo readFileAndCalculate
 			BufferedReader br = null;
 			FileReader fr = null;
 			List<String> hands = new ArrayList<>();
@@ -68,14 +68,13 @@ public class MainV3 {
 				while ((sCurrentLine = br.readLine()) != null) {
 					hands.add(sCurrentLine);
 					
-					// Com arquivos com menos de 5000 linhas, não ta entrando, CONFIRMAR EM CORREÇÃO
 					if (thousand > 5000) {
 						if (hands != null && hands.size() > 0) {
-							// Início do corpo do método verifyHands
+							// InÃ­cio do corpo do mÃ©todo verifyHands
 							for (String hand : hands) {
 
 								String[] tmpHand = hand.split(("\\s+"));
-								// Início do corpo do método isFourEquals
+								// InÃ­cio do corpo do mÃ©todo isFourEquals
 								hand = hand.replaceAll("\\s+","");
 								String tmp = new String(hand);
 								short j = 0;
@@ -92,20 +91,20 @@ public class MainV3 {
 										break;
 									}
 								}
-								// Fim do corpo do método isFourEquals
+								// Fim do corpo do mÃ©todo isFourEquals
 								
 								if(result.equalsIgnoreCase("four")) {
 									four++;
 									result = "";
-								} else if (result.equalsIgnoreCase("nada")) { //se existe pares encerra a verificação
+								} else if (result.equalsIgnoreCase("nada")) { //se existe pares encerra a verificaÃ§Ã£o
 									result = "";
 								} else {
 									
-									// Início do corpo do método isSequency
+									// InÃ­cio do corpo do mÃ©todo isSequency
 									int[] handsNumber = new int[5];
 									
 									j = 0;
-									//transforma string em aray de números
+									//transforma string em aray de nÃºmeros
 									while (j < tmpHand.length) {
 										if(tmpHand[j].equalsIgnoreCase("T")) {
 											handsNumber[j] = Card.T.getCard();
@@ -127,21 +126,21 @@ public class MainV3 {
 									
 									j = 0;
 									short isSequence = 0;
-									//conta os que estão em sequencia
+									//conta os que estÃ£o em sequencia
 									while(j < (handsNumber.length - 1)) {
 										
 										if ((handsNumber[j] + 1) == handsNumber[j+1])
 											isSequence++;
 										j++;
 									}
-									//quer dizer que são sequencia
+									//quer dizer que sÃ£o sequencia
 									if (isSequence > 3)
 										sequence = true;
 									else
 										sequence = false;
-									// Fim do corpo do método isSequency
+									// Fim do corpo do mÃ©todo isSequency
 									
-									if (sequence) { //sequência
+									if (sequence) { //sequÃªncia
 										sequences++;
 										sequence = false;
 									}else {		//todos diferentes
@@ -149,7 +148,7 @@ public class MainV3 {
 									}
 								}
 							}
-							// Fim do corpo do método verifyHands
+							// Fim do corpo do mÃ©todo verifyHands
 							
 							hands = null;
 							hands = new ArrayList<>();
@@ -161,11 +160,11 @@ public class MainV3 {
 				}
 				
 				if (hands != null && hands.size() > 0) {
-					// Início do corpo do método verifyHands
+					// InÃ­cio do corpo do mÃ©todo verifyHands
 					for (String hand : hands) {
 
 						String[] tmpHand = hand.split(("\\s+"));
-						// Início do corpo do método isFourEquals
+						// InÃ­cio do corpo do mÃ©todo isFourEquals
 						hand = hand.replaceAll("\\s+","");
 						String tmp = new String(hand);
 						short j = 0;
@@ -182,20 +181,20 @@ public class MainV3 {
 								break;
 							}
 						}
-						// Fim do corpo do método isFourEquals
+						// Fim do corpo do mÃ©todo isFourEquals
 						
 						if(result.equalsIgnoreCase("four")) {
 							result = "";
 							four++;
-						} else if (result.equalsIgnoreCase("nada")) { //se existe pares encerra a verificação
+						} else if (result.equalsIgnoreCase("nada")) { //se existe pares encerra a verificaÃ§Ã£o
 							result = "";
 						} else {
 							
-							// Início do corpo do método isSequency
+							// InÃ­cio do corpo do mÃ©todo isSequency
 							int[] handsNumber = new int[5];
 							
 							j = 0;
-							//transforma string em aray de números
+							//transforma string em aray de nÃºmeros
 							while (j < tmpHand.length) {
 								if(tmpHand[j].equalsIgnoreCase("T")) {
 									handsNumber[j] = Card.T.getCard();
@@ -217,21 +216,21 @@ public class MainV3 {
 							
 							j = 0;
 							short isSequence = 0;
-							//conta os que estão em sequencia
+							//conta os que estÃ£o em sequencia
 							while(j < (handsNumber.length - 1)) {
 								
 								if ((handsNumber[j] + 1) == handsNumber[j+1])
 									isSequence++;
 								j++;
 							}
-							//quer dizer que são sequencia
+							//quer dizer que sÃ£o sequencia
 							if (isSequence > 3)
 								sequence = true;
 							else
 								sequence = false;
-							// Fim do corpo do método isSequency
+							// Fim do corpo do mÃ©todo isSequency
 							
-							if (sequence) { //sequência
+							if (sequence) { //sequÃªncia
 								sequences++;
 								sequence = false;
 							}else {		//todos diferentes
@@ -239,7 +238,7 @@ public class MainV3 {
 							}
 						}
 					}
-					// Fim do corpo do método verifyHands
+					// Fim do corpo do mÃ©todo verifyHands
 				}
 	
 			} catch (IOException e) {
@@ -261,7 +260,7 @@ public class MainV3 {
 				}
 	
 			}
-			// Fim do corpo do método readFileAndCalculate
+			// Fim do corpo do mÃ©todo readFileAndCalculate
 			
 			datePassed = System.currentTimeMillis() - dateBeggin;
 		
@@ -271,7 +270,7 @@ public class MainV3 {
 		}
 		
 		try {
-			// Início do corpo do método writeFile
+			// InÃ­cio do corpo do mÃ©todo writeFile
 			File file = new File("saida.txt");
 			
 			if (!file.exists()) {
@@ -284,6 +283,7 @@ public class MainV3 {
 			bw.write(line);
 			bw.close();
 			fw.close();
+			// Fim do corpo do mÃ©todo writeFile
 		}
 		
 		catch (IOException e) {
